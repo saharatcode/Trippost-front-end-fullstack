@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+// import './App.css';
+import PrivateRoute from './components/Private-Route/PrivateRoute';
+import localStorageService from './services/localStorageService';
 
 function App() {
+  //ถ้าใน getRole มี Token จะ set ให้เป็น user
+  const [role, setRole] = useState(localStorageService.getRole())
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <PrivateRoute role= {role} setRole= {setRole}/>
     </div>
   );
 }

@@ -1,38 +1,307 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.nav-container {
+  width: 100%;
+  height: 50px;
+  list-style-type: none;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.text-decoration-none {
+  text-decoration: none;
+}
+.nav-container li {
+  float: left;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-container li a  {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
+
+.button-logout {
+  background-color: rgb(0, 0, 0);
+  font-size: 20px;
+  height: 100%;
+  width: 10%;
+  color: rgb(86, 84, 84);
+  float: right;
+  transition-duration: 0.4s;
+  
+}
+
+.button-logout:hover {
+  color: rgb(255, 255, 255);
+  border: none;
+}
+
+.nav-container li a:hover {
+  background-color: #111;
+}
+
+.header-container {
+ align-items: center;
+ text-align: center;
+}
+
+/* .btn-readmore {
+  margin: 4px;
+} */
+
+.container {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* border:  1px solid red; */
+}
+
+
+.card-container{
+  width: 600px;
+  /* border: 1px solid rgb(224, 224, 224); */
+  box-shadow: 5px 10px 8px #888888;
+  align-items: center;
+  /* margin: auto; */
+  margin-bottom: 8px;
+  margin-left: 6px;
+  margin-right: 6px;
+}  
+
+
+.card-container img {
+  width: 100%;
+  height: 200px;
+}
+
+.read-container{
+  width: 800px;
+  /* border: 1px solid rgb(224, 224, 224); */
+  /* box-shadow: 5px 10px 8px #888888; */
+  align-items: center;
+  /* margin: auto; */
+  margin-bottom: 8px;
+  margin-left: 6px;
+  margin-right: 6px;
+  top: 90;
+}  
+
+.read-container img {
+  width: 100%;
+  height: 400px;
+}
+
+.padding {
+  padding: 16px;
+}
+
+.container-footer-content {
+  display: flex;
+}
+.mgr {
+  margin-right: 6px;
+}
+
+.mgr-100per {
+  margin-right: 300px;
+}
+
+.like-paddind {
+  padding-left: 300px;
+}
+
+.position-fix {
+  position: fixed;
+}
+
+.margin-top-90 {
+  margin-top: 90px;
+}
+
+.footer-container {
+  background-color: #333;
+  width: 100%;
+  height: auto;
+  margin-top: 6%;
+  text-align: center;
+  padding: 50px;
+  
+}
+
+.center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.comment-form input[type=text] {
+  width: 600px;
+  padding: 12px 20px ;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.comment-form  {
+  padding-top: 16px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+
+
+.comment-container {
+  width: 810px;
+  padding: 8px;
+}
+
+.comment-container-write {
+  width: 830px;
+  padding: 8px;
+}
+
+.border {
+  border: 1px solid black;
+}
+
+.border-red {
+  border: 1px solid red;
+}
+
+.w-80per {
+  width: 80%;
+}
+.N {
+  display: inline;
+  float: left;
+}
+
+.img-profile {
+  width:200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.scrollbar {
+  background-color: rgb(255, 255, 255);
+  width: 90%;
+  height: 700px;
+  /* border: 1px solid rgb(64, 63, 63); */
+  overflow-y: scroll; /* Add the ability to scroll */
+}
+
+.my-list-post { 
+  min-height: 90px;
+  /* border: 1px solid black; */
+  border-bottom: 1px solid rgb(169, 163, 163);
+  font-size: 20px;
+  color: rgb(61, 60, 60);
+  font-weight: bold;
+  padding-left: 32px;
+}
+
+.btn-my-list-post {
+/* margin-top: 0px; */
+/* margin-left: 160px; */
+float: right;
+}
+
+.like {
+  cursor: pointer;
+}
+
+.s-16 {
+  font-size: 12px;
+}
+
+.color-gray {
+  color: #4a4848;
+}
+
+.text-read {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 500;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.title-read {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 50px;
+  line-height: 30px;
+  font-weight: 500;
+  height: 70px;
+}
+.ownerPost-read {
+  font-family: "Times New Roman", Times, serif;
+  text-align: left;
+  margin-left: 16px;
+}
+
+.background-color {
+  background-color:  lightgrey;
+}
+
+.background-color-read-content {
+  background-color: lightgrey;
+}
+
+.background-color-read-component {
+  background-color: white;
+}
+
+.blackground-color-white{
+  background-color: rgb(255, 255, 255);
+}
+
+.blackground-color-header{
+  background-color: white;
+}
+
+.padding-top-header {
+  padding-top: 90px;
+}
+
+.postList-margin-top {
+  margin-top: 30px;
+}
+
+.postList-margin-buttom {
+  margin-bottom: 16px;
+}
+
+.postList-color {
+  color: black;
+}
+
+.hr-w {
+  width: 84%;
+}
+
+pre {
+  white-space:pre-wrap;
+}
+
+.size-icon {
+  font-size: 50px;
+}
+
+
+
+ 
+
+
+/* .center {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+} */
