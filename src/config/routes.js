@@ -4,10 +4,10 @@ import ProfilePage from '../components/pages/Profile'
 import RegisterPage from '../components/pages/Register'
 import ReadContentPage from '../components/pages/ReadContent'
 import EdithContentPage from '../components/pages/EdithContent'
-
+import ProfileWriter from '../components/pages/ProfileWriter'
 const components = {
     home: {
-        url: "/home",
+        url: "/home", 
         component: HomePage
     },
     login: {
@@ -29,6 +29,10 @@ const components = {
     edithContent: {
         url: "/edith-content/:id",
         component: EdithContentPage
+    },
+    profileWriter: {
+        url: "/profile-writer/:id",
+        component: ProfileWriter
     }
 };
 
@@ -46,6 +50,7 @@ export default {
             components.profile,
             components.readContent,
             components.edithContent,
+            components.profileWriter,
         ],
         redirectRoutes: "/home"
     },

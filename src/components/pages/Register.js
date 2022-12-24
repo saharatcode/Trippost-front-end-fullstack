@@ -1,143 +1,185 @@
 import React from 'react';
-import {withRouter, Link} from 'react-router-dom'
-import { Form, Input, Button, Row, Col, Divider, notification } from 'antd';
-import Title from 'antd/lib/typography/Title';
-
+import { withRouter, Link } from 'react-router-dom'
+import { Form, Input, notification } from 'antd';
 import axios from '../../config/axios'
+import '../../App.css'
 
-const layout = {
-    labelCol: { xs: 24, sm: 7, md: 6, lg: 6, xl: 5, xxl: 4 },
-    wrapperCol: { xs: 24, sm: 17, md: 18, lg: 18, xl: 19, xxl: 20 },
-};
 function Register(props) {
+  
 
-    const onFinish = values => {
-        console.log('Received values of form: ', values);
-        const body = {
-            firstName: values.firstName,
-            lastName: values.lastName,
-            email: values.email,
-            password: values.password,
-            confirmPassword: values.confirmPassword,
-        }
-        //ส่ง request หา back-end
-        axios.post("/users/register", body)
-        .then(res => {
-            console.log(res)
-            notification.success({
-                message:`คุณ ${values.firstName} สมัครสำเร็จเรียบร้อยแล้ว`
-            });
-            props.history.push("/login")
+  const onFinish = values => {
+    console.log('Received values of form: ', values);
+    const body = {
+      firstName: values.firstName,
+      lastName: values.lastName,
+      email: values.email,
+      password: values.password,
+      confirmPassword: values.confirmPassword,
+    }
+    //ส่ง request หา back-end
+    axios.post("/users/register", body)
+      .then(res => {
+        console.log(res)
+        notification.success({
+          message: `คุณ ${values.firstName} สมัครสำเร็จเรียบร้อยแล้ว`
+        });
+        props.history.push("/login")
+      })
+      .catch(err => {
+        notification.error({
+          message: `อีเมลนี้ถูกใช้ไปแล้ว`
         })
-        .catch( err => {
-            notification.error({
-                message: `การสมัครสมาชิกล้มเหลว`
-            })
-        })
-    };
+      })
+  };
 
-    return (
-        <Row justify="center" >
-            <Col xs={23} sm={23} md={23} lg={14} xl={14} xxl={12}>
-                <div
-                    className="Form"
-                >
-                    <Row justify="center">
-                        <Title level={2} className="Title">
-                            Register
-                        </Title>
-                    </Row>
-                    <Divider className="Divider" />
-                    <Form
-                        {...layout}
-                        onFinish={onFinish}
-                        style={{ width: "100%" }}
-                    >
-                      {/* FirstName */}
-                        <Form.Item
-                            name="firstName"
-                            label={<span>First Name&nbsp;</span>}
-                            rules={[{ required: true, message: 'Please input your first name!', whitespace: true }]}
-                        >
-                            <Input />
-                        </Form.Item>
+  return (
+    <>
+      <section className="text-center text-lg-start">
 
-                      {/* LastName */}
-                        <Form.Item
-                            name="lastName"
-                            label={<span>Last Name&nbsp;</span>}
-                            rules={[{ required: true, message: 'Please input your larst name!', whitespace: true }]}
-                        >
-                            <Input />
-                        </Form.Item>
+        <div className="container py-4" >
+          <div className="row g-0 align-items-center">
 
-                        <Form.Item
-                            name="email"
-                            label="E-mail"
-                            rules={[
-                                {
-                                    type: 'email',
-                                    message: 'The input is not valid E-mail!',
-                                },
-                                {
-                                    required: true,
-                                    message: 'Please input your E-mail!',
-                                },
-                            ]}
-                        >
-                            <Input />
-                        </Form.Item>
+            <div className="col-lg-6 mb-5 mb-lg-0 ">
+              <div className="card cascading-right backdropFilter" style={{ background: " hsla(0, 0%, 100%, 0.55)" }}>
+                <div className="card-body p-5 shadow-5 text-center  ">
+                  <h2 className="fw-bold mb-1">Sign up</h2>
+                  <p className="fw-bold mb-5">create trippost accout</p>
+
+                  <Form
+
+                    onFinish={onFinish}
+                    style={{ width: "100%" }}
+                  >
+                    <div>
+                      {/* <!-- 2 column grid layout with text inputs for the first and last names --> */}
+                      <div className="row">
+                        <div className="col-md-6 mb-0">
+
+                          <div className="">
+
+                            <Form.Item
+                              name="firstName"
+                              placeholder="First Namet"
+                              // label={<span>First Name&nbsp;</span>}
+                              rules={[{ required: true, message: 'Please input your first name!', whitespace: true }]}
+                            >
+                              <Input placeholder="First name" />
+                            </Form.Item>
+
+                          </div>
+                        </div>
+                        <div className="col-md-6 mb-0">
+                          <div className="form-outline">
+
+                            <Form.Item
+                              name="lastName"
+                              // label={<span>First Name&nbsp;</span>}
+                              rules={[{ required: true, message: 'Please input your last name!', whitespace: true }]}
+                            >
+                              <Input placeholder="Last name" />
+                            </Form.Item>
+
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* <!-- Email input --> */}
+                      <div className="form-outline mb-4">
 
                         <Form.Item
-                            name="password"
-                            label="Password"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Please input your password!',
-                                    
-                                },
-                            ]}
-                            hasFeedback
+                          name="email"
+                          // label="E-mail"
+                          rules={[
+                            {
+                              type: 'email',
+                              message: 'The input is not valid E-mail!',
+                            },
+                            {
+                              required: true,
+                              message: 'Please input your E-mail!',
+                            },
+                          ]}
                         >
-                            <Input.Password />
+                          <Input placeholder="Email" />
                         </Form.Item>
+
+                      </div>
+
+                      {/* <!-- Password input --> */}
+                      <div className="form-outline mb-4">
 
                         <Form.Item
-                            name="confirmPassword"
-                            label="Confirm Password"
-                            hasFeedback
-                            dependencies={["password"]}
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Please confirm your password!',
-                                },
-                                ({getFieldValue}) => ({
-                                    validator(rule, value) {
-                                        if (!value || getFieldValue('password') === value) {
-                                            return Promise.resolve();
-                                        }
-                                        return Promise.reject("Comfirm Password ต้องตรงกับ Password")
-                                        
-                                    }
-                                })
-                            ]}
+                          name="password"
+                          // label="Password"
+                          rules={[
+                            {
+                              required: true,
+                              message: 'Please input your password!',
+
+                            },
+                          ]}
+                          hasFeedback
                         >
-                            <Input.Password />
+                          <Input.Password placeholder="Password" />
+
                         </Form.Item>
 
-                            <Button className="Button" type="primary" htmlType="submit">
-                                Register
-                            </Button>
+                      </div>
+                      <div className="form-outline mb-4">
 
-                            <Link to="/login"><Button>Login</Button></Link>
-                    </Form>
+                        <Form.Item
+                          name="confirmPassword"
+                          // label="Confirm Password"
+                          hasFeedback
+                          dependencies={["password"]}
+                          rules={[
+                            {
+                              required: true,
+                              message: 'Please confirm your password!',
+                            },
+                            ({ getFieldValue }) => ({
+                              validator(rule, value) {
+                                if (!value || getFieldValue('password') === value) {
+                                  return Promise.resolve();
+                                }
+                                return Promise.reject("Comfirm Password ต้องตรงกับ Password")
+
+                              }
+                            })
+                          ]}
+                        >
+                          <Input.Password placeholder="Confirm password" />
+                        </Form.Item>
+
+                      </div>
+
+                      {/* <!-- Checkbox --> */}
+                      <div className="d-flex justify-content-center mb-4">
+                        <p>Wellcom to trippost blog</p>
+                      </div>
+
+                      {/* <!-- Submit button --> */}
+                      <button type="submit" className="btn  btn-block mb-4 btn-dark" >
+                        Sign up
+                      </button>
+
+                    </div>
+                  </Form>
                 </div>
-            </Col>
-        </Row>
-    );
+              </div>
+            </div>
+
+            <div className="col-lg-6">
+              <img src="https://res.cloudinary.com/dv7ae30yk/image/upload/v1671611352/timo-stern-iUBgeNeyVy8-unsplash_2_yx9qwe.jpg" style={{ height: "700px" }} class="w-100 rounded-4 shadow-4"
+                alt="" />
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </>
+  )
 }
 
 export default withRouter(Register)
-// export default Register

@@ -21,15 +21,16 @@ let writeComment = (
 )
   return (
     <>
-        <div className='comment-container-write '>
-            <div className='row'>
-              <div className='col-10'>
-                {writeComment}
-              </div>
-              <div className='col-2'>
-                 <Button size='large' onClick={addComment}>send</Button>
-              </div>
+        <div className='container-fluid mt-4 ' style={{width:"800px"}}>
+          <div className='row'>
+            <div className='col-10'>
+              {writeComment}
             </div>
+            <div className='col-2'>
+            <Button style={{width:"100%", height:"100%", color:"white", background:"black", fontSize:"20px"}} onClick={addComment}>send</Button>
+            </div>
+          </div>
+
         </div>
 
        

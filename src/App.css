@@ -1,28 +1,27 @@
-.nav-container {
-  width: 100%;
-  height: 50px;
+ul {
   list-style-type: none;
-  top: 0;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: #333;
-  color: white;
 }
 
-.text-decoration-none {
-  text-decoration: none;
-}
-.nav-container li {
+li {
   float: left;
 }
 
-.nav-container li a  {
+li a {
+  height:60px;
   display: block;
   color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+  color: white;
 }
 
 .button-logout {
@@ -39,10 +38,6 @@
 .button-logout:hover {
   color: rgb(255, 255, 255);
   border: none;
-}
-
-.nav-container li a:hover {
-  background-color: #111;
 }
 
 .header-container {
@@ -227,18 +222,20 @@ float: right;
 }
 
 .text-read {
+  /* line-height: px; */
   font-size: 20px;
-  line-height: 30px;
+  line-height: 30px; 
   font-weight: 500;
   font-family: "Times New Roman", Times, serif;
 }
 
 .title-read {
+  line-height: 50px;
   font-family: "Times New Roman", Times, serif;
   font-size: 50px;
-  line-height: 30px;
+  /* line-height: 30px; */
   font-weight: 500;
-  height: 70px;
+  /* height: 70px; */
 }
 .ownerPost-read {
   font-family: "Times New Roman", Times, serif;
@@ -292,6 +289,35 @@ pre {
 
 .size-icon {
   font-size: 50px;
+}
+
+.cascading-right {
+  margin-right: -50px;
+}
+
+@media (max-width: 991.98px) {
+  .cascading-right {
+    margin-right: 0;
+  }
+}
+
+.backdropFilter {
+  backdrop-filter: blur(30px); 
+}
+
+.maxwith {
+  width: auto;
+  height: auto;
+  border: 1px solid black;
+  
+}
+
+.font {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.word-wrap {
+  word-wrap: break-word;
 }
 
 

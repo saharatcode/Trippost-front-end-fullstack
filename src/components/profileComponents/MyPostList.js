@@ -14,7 +14,7 @@ export default function MyPostList() {
       console.log(err)
     }
   };
-
+ 
   useEffect(() => {
     fetchPost();
     

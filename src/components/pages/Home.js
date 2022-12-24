@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from 'react'
-// import { Link } from 'react-router-dom'
-// import { Button } from 'antd';
-// import PostPage from './PostPage';
-// import PostCard from './postComponents/PostCard';
+import React, { useEffect, useState, } from 'react'
 import axios from '../../config/axios'
-// import PostList from './postComponents/PostList';
 import PostLists from '../homeComponents.js/PostLists'
+import Header from '../homeComponents.js/Header'
+import Navigationbar from '../navigation-bar/Navigationbar'
+import Footer from '../footer/Footer'
 
-// import Header from './Header';
-
-
-export default function Home() {
+export default function Home(props) {
+  const [prop, setProp] = useState(props)
   const [posts, setPosts] = useState([])
   const [data, setData] = useState()
   console.log(data)
@@ -20,18 +16,23 @@ export default function Home() {
       try {
         const res = await axios.get('/posts')
         setPosts(res.data.posts);
-      } catch (err){
+      } catch (err) {
         console.log(err)
       }
     };
     fetchPost();
-    
-  }, [])
-  return (
-    <div>
-    <PostLists posts={posts}/>
-    </div>
-    
 
+  }, [])
+
+  return (
+
+    <div>
+      <Navigationbar props={prop} />
+      <Header />
+      <PostLists posts={posts} />
+      <Footer />
+    </div>
   )
 }
+
+

@@ -1,11 +1,26 @@
 import { Button,Form, Input } from 'antd'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from '../../config/axios';
 import '../../App.css'
 
-export default function ProfileConponent({user, fetchPost}) {
+export default function ProfileConponent() {
 
-  const [inputImage, setInputImage] = useState();
+  const [profileData, setProfileData] = useState([])
+  
+  const fetchUser = async () => {
+    try {
+      const res = await axios.get('/users')
+      setProfileData(res.data.user);
+    } catch (err){
+      console.log(err)
+    }
+  };
+  useEffect(() => {
+    fetchUser();  
+    
+  }, [])
+
+  const [inputImage, setInputImage] = useState(false);
   const [newFirstName, newSetFirstName] = useState();
   const [newLastName, newSetLastName] = useState();
 
@@ -14,14 +29,14 @@ export default function ProfileConponent({user, fetchPost}) {
 
   const [edithButton, setEdithButton] = useState(false)
   let [uploadButton, setUploadButton] = useState(false)
-
+console.log(inputImage)
  
   let imgProfile
   if(inputImage) {
     imgProfile = URL.createObjectURL(inputImage);
-    uploadButton = "upload"
-  } else if(user.profileImage) {
-    imgProfile = user.profileImage;
+    // uploadButton = "upload"
+  } else if(profileData.profileImage) {
+    imgProfile = profileData.profileImage;
   } else {
     imgProfile = "https://res.cloudinary.com/dv7ae30yk/image/upload/v1671340437/blank-profile-picture-gbc548e19f_1280_eutyml.png"
   }
@@ -32,7 +47,8 @@ export default function ProfileConponent({user, fetchPost}) {
   const updateProfileImage = async () => {
     try {
       await axios.patch('users/profile-img', formData)
-      fetchPost()
+      setInputImage(false)
+      fetchUser()
       // window.location.reload(false)
     }catch(err){
       console.log(err)
@@ -48,7 +64,7 @@ export default function ProfileConponent({user, fetchPost}) {
     try {
       await axios.patch('users/new-user-name', body)
       setEdithButton(false)
-      fetchPost()
+      fetchUser()
       // window.location.reload(false)
     }catch(err){
       console.log(err)
@@ -57,8 +73,8 @@ export default function ProfileConponent({user, fetchPost}) {
 
   const showEdithForm = () => {
     setEdithButton(true)
-    newSetFirstName(user.firstName)
-    newSetLastName(user.lastName)
+    newSetFirstName(profileData.firstName)
+    newSetLastName(profileData.lastName)
     console.log(edithButton)
   }
 
@@ -92,13 +108,14 @@ if(edithButton) {
         <div className='center'>
         
         <div>
-        <input type="file" accept="image/*" id="banner-upload" onChange={ async (e) => {if(e.target.files[0]) setInputImage(e.target.files[0])}} hidden/>
-        < label for="banner-upload" ><img src={imgProfile} alt="upload banner" className='img-profile like' /></label>
+        <input type="file" accept="image/*" id="profile-upload" onChange={ async (e) => {if(e.target.files[0]) setInputImage(e.target.files[0])}} hidden/>
+        < label for="profile-upload" ><img src={imgProfile} alt="upload profile" className='img-profile like' /></label>
         </div>
-        {uploadButton === "upload" && <Button onClick={updateProfileImage}>upload</Button>}
+        {/* {uploadButton === "upload" && <Button onClick={updateProfileImage}>upload</Button>} */}
+        {inputImage && <Button onClick={updateProfileImage}>upload</Button>}
         <div>
             <br/>
-            <h3>{user.firstName+" "+user.lastName}<sub><Button size='small' onClick={showEdithForm}>edith</Button></sub></h3>
+            <h3>{profileData.firstName+" "+profileData.lastName}<sub><Button size='small' onClick={showEdithForm}>edith</Button></sub></h3>
             {edithUserNameForm}  
         </div>
         </div>

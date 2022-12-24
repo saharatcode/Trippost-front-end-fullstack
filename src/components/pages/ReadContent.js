@@ -8,7 +8,8 @@ import CommentShow from '../readComponent/CommentShow'
 import '../../App.css'
 import axios from '../../config/axios'
 
-export default function ReadContent() {
+export default function ReadContent(props) {
+  const [prop, setProp]= useState(props)
     const {id} = useParams()
     const postId = parseInt(id)
     
@@ -17,7 +18,10 @@ export default function ReadContent() {
     const [likes, setLikes] = useState()
     const [firstName, setFirstName] = useState()
     const [lastName, setLastName] = useState()
-  // console.log(likes)
+    const [profileImage, setProfileImage] = useState()
+    const [createdAt, setcreatedAt] = useState()
+    const [userId, setUserId] = useState()
+    
     const fetchPost = async () => {
       try {
         const res = await axios.get('/posts')
@@ -26,6 +30,9 @@ export default function ReadContent() {
         setLikes(res.data.posts.find(e => e.id === postId).Likes.length)
         setFirstName(res.data.posts.find(e => e.id === postId).User.firstName)
         setLastName(res.data.posts.find(e => e.id === postId).User.lastName)
+        setProfileImage(res.data.posts.find(e => e.id === postId).User.profileImage)
+        setcreatedAt(res.data.posts.find(e => e.id === postId).createdAt)
+        setUserId(res.data.posts.find(e => e.id === postId).User.id)
       } catch (err){
         console.log(err)
       }
@@ -35,26 +42,31 @@ export default function ReadContent() {
       fetchPost();
     }, [])
 
-    // console.log(comments)
-//
   return (
     <div className='background-color-read-content'>
-        <Navigationbar/>
+        <Navigationbar props={prop}/>
         <div className='container'>
-            <ReadComponent posts={posts}  fetchPost={fetchPost} firstName={firstName} lastName={lastName} likes={likes}/>
-            {/* <LikeComponent/> */}
-        
-            {/* <h1>{posts.title}</h1> */}
+            <ReadComponent 
+            posts={posts} 
+            userId={userId} 
+            createdAt={createdAt} 
+            profileImage={profileImage}  
+            fetchPost={fetchPost} 
+            firstName={firstName} 
+            lastName={lastName} 
+            likes={likes}/>
         </div>
         <div className='container'>
-            <CommentWrite postId={posts.id} fetchPost={fetchPost}/>
+            <CommentWrite 
+            postId={posts.id} 
+            fetchPost={fetchPost}/>
         </div>
         <div className='container'>
-            {/* <CommentList post={posts.Comments}/> */}
-            {/* <CommentShow/> */}
-
             {comments.map( (item) => (
-            <CommentShow key={item.id} comment={item} fetchPost={fetchPost}/>
+            <CommentShow 
+            key={item.id} 
+            comment={item} 
+            fetchPost={fetchPost} />
               ))}
         </div>
         

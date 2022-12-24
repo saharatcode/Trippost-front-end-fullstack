@@ -20,63 +20,44 @@ export default function CommentShow({comment:{text, User,id}, fetchPost}) {
     }
 //.........................................................................................
     const ownerPost = parseJwt(token)
-    console.log(ownerPost.id)
-    console.log(`id:${User.firstName}`)
-    //{comment:{text, User}}
-    // console.log(Comments)
-    let [toggleCommentEdithForm, setCommentEdithForn] = useState(false)
-    // const toggleEdith = () => {
-    //     setCommentEdithForn(true)
-    // }
-    
+    // console.log(ownerPost.id)
+    // console.log(`id:${User.firstName}`)
     const deleteComment = async () => {
         await axios.delete(`/comments/${id}`);
-        // console.log('unLike')
         fetchPost()
     }
+  
 
     let CommentEditFrom;
     if(ownerPost.id == User.id){
         CommentEditFrom = (
             <>
-            <div className='row'>
-                <div className='col'>
-                    {/* <Button size='small' onClick={toggleEdith}>edith</Button> */}
-                    <Button size='small' onClick={deleteComment}>delete</Button>
-                </div>
-            </div>
+
+            {/* <Button size='small' onClick={toggleEdith}>edith</Button> */}
+            {/* <Button size='small' onClick={deleteComment}>delete</Button> */}
+            <Button style={{color:"black"}} className='btn btn-warning'  size='small' onClick={deleteComment}>delete</Button>
+
             </>
         )
     }
 
-    // let edithCommentInput;
-    // if(true){
-    //     edithCommentInput = (
-    //         <>
-    //     <Form.Item
-    //     label=""
-    //     name="newComment"
-    //     rules={[{ required: false, message: 'Please input your username!' }]}
-    //     >
-    //     <Input />
-    //     </Form.Item>
-    //         </>
-    //     )
-    // }
-
   return (
-    <div className='blackground-color-white'>
-        <div className='comment-container border'>
-            <div>
-                <b>{User.firstName +" "+ User.lastName}</b>
-                
-            </div>
-            <p>
-                {text}
-            </p>
-            {/* {edithCommentInput} */}
-            {CommentEditFrom}
+    <>
+    <div className='container-fluid blackground-color-white mt-4' style={{width:"800px"}}>
+        <div className='row mt-2' style={{marginLeft:"6px",fontSize:"17px", fontWeight: "bold"}}>
+            {User.firstName +" "+ User.lastName}
         </div>
-    </div>
+        <div className='row mb-3 word-wrap' style={{marginLeft:"6px",fontSize:"16px", fontWeight: "normal"}}>
+            {text}
+        </div>
+        <div className='row'>
+            <div className='col-2 mb-4'>
+                {CommentEditFrom}
+                {/* <Button className='btn btn-warning'  size='small' onClick={deleteComment}>delete</Button> */}
+            </div>
+        </div>
+    </div>   
+    </>
+   
   )
 }
