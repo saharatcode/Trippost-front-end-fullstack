@@ -19,7 +19,7 @@ export default function Login(props) {
       })
       .catch(err => {
         notification.error({
-          message: `การเข้าสู่ระบบล้มเหลว`
+          message: `Incorrect email or password`
         })
       })
   };
@@ -34,6 +34,7 @@ export default function Login(props) {
                 <div className="row g-0" >
                   <div className="col-md-6 col-lg-5 d-none d-md-block">
                     <img src="https://res.cloudinary.com/dv7ae30yk/image/upload/v1671608024/timo-stern-iUBgeNeyVy8-unsplash_c7xqtn.jpg"
+                    
                       alt="login form" className="img-fluid" style={{ borderRadius: "1rem 0 0 1rem" }} />
                   </div>
                   <div className="col-md-6 col-lg-7 d-flex align-items-center">

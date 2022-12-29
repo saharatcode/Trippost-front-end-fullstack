@@ -21,13 +21,13 @@ function Register(props) {
       .then(res => {
         console.log(res)
         notification.success({
-          message: `คุณ ${values.firstName} สมัครสำเร็จเรียบร้อยแล้ว`
+          message: `${values.firstName} Sign up successfully.`
         });
         props.history.push("/login")
       })
       .catch(err => {
         notification.error({
-          message: `อีเมลนี้ถูกใช้ไปแล้ว`
+          message: `this email has already been used.`
         })
       })
   };
@@ -87,16 +87,16 @@ function Register(props) {
                       <div className="form-outline mb-4">
 
                         <Form.Item
-                          name="email"
+                          name="email" 
                           // label="E-mail"
                           rules={[
                             {
                               type: 'email',
-                              message: 'The input is not valid E-mail!',
+                              message: 'Please enter a valid email.',
                             },
                             {
                               required: true,
-                              message: 'Please input your E-mail!',
+                              message: 'Please input your email!',
                             },
                           ]}
                         >
@@ -142,7 +142,7 @@ function Register(props) {
                                 if (!value || getFieldValue('password') === value) {
                                   return Promise.resolve();
                                 }
-                                return Promise.reject("Comfirm Password ต้องตรงกับ Password")
+                                return Promise.reject("Comfirm Password must match Password")
 
                               }
                             })

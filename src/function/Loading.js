@@ -6,12 +6,12 @@ function Loading() {
             style={{zIndex:1100}}
         >
             <div 
-            className="spinner-border text-warning"
+            class="spinner-grow text-success" role="status"
             style={{width: '3rem', height:"3rem"}}
             >
             </div>
 
-            <span className="text-warning ms-3" style={{fontSize:"30px"}}>Please wait</span>
+            <span className="text-success ms-3" style={{fontSize:"30px"}}>Please wait</span>
          </div>
     )
 }

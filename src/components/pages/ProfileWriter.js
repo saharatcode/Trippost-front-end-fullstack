@@ -82,8 +82,9 @@ export default function ProfileWriter(props) {
     try {
       setLoading(true)
       await axios.patch('users/profile-img', formData)
-      fetchPost()
       setImageInput(null)
+      fetchUser()
+      window.location.reload();
       setLoading(false)
     } catch (err) {
       console.log(err)
@@ -91,16 +92,17 @@ export default function ProfileWriter(props) {
   }
 
   const body = {
-    firstName: newFirstName,
+    firstName: newFirstName, 
     lastName: newLastName,
-  }
+  } 
 
   const updateNameWriter = async () => {
     try {
       setLoading(true)
       await axios.patch('users/new-user-name', body)
-      fetchPost()
+      fetchUser()
       setShowFormEdithWriterName(false)
+      window.location.reload()
       setLoading(false)
     } catch (err) {
       console.log(err)
@@ -193,13 +195,13 @@ export default function ProfileWriter(props) {
       </>
     )
   }
-
+ 
 
   return (
     <>
       {loading && <Loading />}
       <Navigationbar props={prop} />
-      <Header />
+      <Header /> 
 
       <div className='container-fluid w-75 font'>
         <div className='row'>

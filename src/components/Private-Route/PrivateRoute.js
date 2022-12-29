@@ -6,6 +6,7 @@ import ConfigRoutes from '../../config/routes'
 function PrivateRoute(props) {
     // const navigate = useNavigate()
     const role = props.role || "guest";
+    // console.log(ConfigRoutes)
 
     const allowedRoutes = ConfigRoutes[role].allowedRoutes;
     const redirectRoutes = ConfigRoutes[role].redirectRoutes;

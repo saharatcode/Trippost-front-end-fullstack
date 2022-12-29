@@ -1,6 +1,6 @@
 import HomePage from '../components/pages/Home'
 import LoginPage from '../components/pages/Login'
-import ProfilePage from '../components/pages/Profile'
+import WriteNowPage from '../components/pages/writeNow'
 import RegisterPage from '../components/pages/Register'
 import ReadContentPage from '../components/pages/ReadContent'
 import EdithContentPage from '../components/pages/EdithContent'
@@ -14,9 +14,9 @@ const components = {
         url: "/login",
         component: LoginPage
     },
-    profile: {
-        url: "/profile",
-        component: ProfilePage
+    writeNow: {
+        url: "/write",
+        component: WriteNowPage
     },
     register: {
         url: "/register",
@@ -47,7 +47,7 @@ export default {
     user: {
         allowedRoutes: [
             components.home,
-            components.profile,
+            components.writeNow,
             components.readContent,
             components.edithContent,
             components.profileWriter,

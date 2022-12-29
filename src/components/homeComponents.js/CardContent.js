@@ -10,7 +10,7 @@ export default function CardContent({ post }) {
     const [comments, setComment] = useState(post.Comments)
     const [likes, setLike] = useState(post.Likes)
     const [userId, setUserId] = useState(post.User.id)
-    console.log(userId)
+    // console.log(userId)
 
     const str = post.text
     const str200 = str.slice(0, 200)
