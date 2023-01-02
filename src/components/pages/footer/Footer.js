@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../App.css'
+import '../../../App.css'
 import { AndroidOutlined, AppleOutlined, WindowsOutlined, GithubOutlined, TwitterOutlined, FacebookOutlined } from '@ant-design/icons';
 
 export default function Footer() {

@@ -77,13 +77,13 @@ li :active{
   margin: 4px;
 } */
 
-.container {
-  width: 90%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  /* border:  1px solid red; */
+.con {
+  /* width: 90%; */
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* flex-wrap: wrap; */
+  /* justify-content: center; */
+  border:  1px solid red;
 }
 
 
@@ -303,9 +303,9 @@ float: right;
   background-color: white;
 }
 
-.padding-top-header {
+/* .padding-top-header {
   padding-top: 90px;
-}
+} */
 
 .postList-margin-top {
   margin-top: 30px;
@@ -360,14 +360,60 @@ pre {
   word-wrap: break-word;
 }
 
+.title-css {
+  text-decoration: none;
+  color: black;
+}
 
+.title-css :hover{
+  text-decoration: underline;
+}
 
- 
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 20%;
+  width: auto;
+  padding:16px;
+  margin-top: -30px;
+  color: white;
+  font-size: 24px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
 
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
 
-/* .center {
-  margin: auto;
-  width: 50%;
-  border: 3px solid green;
-  padding: 10px;
-} */
+.prev {
+  left: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+}
+
+.pagination a.active {
+  background-color: #000000;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}

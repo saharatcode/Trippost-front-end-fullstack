@@ -1,10 +1,10 @@
 import React, { useEffect, useState, } from 'react'
 import { useParams } from 'react-router-dom'
-import Navigationbar from '../navigation-bar/Navigationbar'
-import Footer from '../footer/Footer'
-import ReadComponent from '../readComponent/ReadComponent'
-import CommentWrite from '../readComponent/CommentWrite'
-import CommentShow from '../readComponent/CommentShow'
+import Navigationbar from './navigation/Navigationbar'
+import Footer from './footer/Footer'
+import ReadComponent from './readComponent/ReadComponent'
+import CommentWrite from './readComponent/CommentWrite'
+import CommentShow from './readComponent/CommentShow'
 import '../../App.css'
 import axios from '../../config/axios'
 
@@ -20,7 +20,7 @@ export default function ReadContent(props) {
   const [lastName, setLastName] = useState()
   const [profileImage, setProfileImage] = useState()
   const [createdAt, setcreatedAt] = useState()
-  
+
   const fetchPost = async () => {
     try {
       const res = await axios.get('/posts')
@@ -41,38 +41,38 @@ export default function ReadContent(props) {
   }, [])
 
   return (
-    
-      <div className='background-color-read-content'>
-        <Navigationbar props={prop} />
-        <div className='container'>
-          <ReadComponent
-            posts={posts}
-            createdAt={createdAt}
-            profileImage={profileImage}
-            fetchPost={fetchPost}
-            firstName={firstName}
-            lastName={lastName}
-            likesLength={likesLength}
-          />
-        </div>
-        <div className='container'>
-          <CommentWrite
-            postId={posts.id}
-            fetchPost={fetchPost} />
-        </div>
-        <div className='container'>
-          {comments.map((item) => (
-            <CommentShow
-              key={item.id}
-              comment={item}
+    <div style={{background:"rgb(238,238,238)"}}>
+      <Navigationbar props={prop} />
+      <div className='container' style={{marginTop:"50px"}}>
+          <div className='row'>
+            <ReadComponent
+              posts={posts}
+              createdAt={createdAt}
+              profileImage={profileImage}
+              fetchPost={fetchPost}
+              firstName={firstName}
+              lastName={lastName}
+              likesLength={likesLength}
+            />
+          </div>
+          <div className='row'>
+            <CommentWrite
+              postId={posts.id}
               fetchPost={fetchPost} />
-          ))}
+          </div>
+          <div className='row'>
+            {comments.map((item) => (
+              <CommentShow
+                key={item.id}
+                comment={item}
+                fetchPost={fetchPost} />
+            ))}
+          </div>
         </div>
+      <Footer />
+    </div>
 
-        <Footer />
 
-      </div>
-   
 
   )
 }

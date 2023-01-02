@@ -8,7 +8,7 @@ export default function UserProfile({ firstName, lastName, profileImage, created
     let dateStr = `${date}`.split(' ')
     let MDYArr = date.toLocaleDateString().split('/');
     let DMY = `${dateStr[0]}, ${MDYArr[1]}/${dateStr[1]}/${MDYArr[2]}`
-    
+
     let path = `/profile-writer/${userId}`
     const defultImage = "https://res.cloudinary.com/dv7ae30yk/image/upload/v1671340437/blank-profile-picture-gbc548e19f_1280_eutyml.png"
 
@@ -19,7 +19,7 @@ export default function UserProfile({ firstName, lastName, profileImage, created
                     <div className='col-1'>
                         <div>
                             <img
-                                src={profileImage ?? defultImage }
+                                src={profileImage ?? defultImage}
                                 style={{ width: "60px", height: "60px", borderRadius: "50%" }} />
                         </div>
                     </div>

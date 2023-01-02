@@ -1,12 +1,11 @@
 import { Button, Modal, notification } from 'antd'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import localStorageService from '../../services/localStorageService'
-import axios from '../../config/axios'
+import localStorageService from '../../../services/localStorageService'
+import axios from '../../../config/axios'
 
 export default function WriterPostList({ fetchPost, like, comment, image, title, text, postId, posts: { User: { id } } }) {
 
-    const [confirmDelete, setConfirmDelete] = useState(false)
     const confirm = () => {
         Modal.confirm({
             title: `Do you want to delete this post?`,
@@ -29,14 +28,14 @@ export default function WriterPostList({ fetchPost, like, comment, image, title,
                     </div>
                 </>
             ),
-            onOk() {deletePost()},
             width: "800px",
-            okButtonProps: {
-                type: 'default'
-            },
-            cancelButtonProps: {
-                type: 'primary'
-              },
+            // okButtonProps: {
+            //     type: 'default'
+            // },
+            // cancelButtonProps: {
+            //     type: 'primary'
+            //   },
+            onOk() {deletePost()},
         });
     };
 

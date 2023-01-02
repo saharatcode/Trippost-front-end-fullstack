@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { LogoutOutlined } from '@ant-design/icons';
-import localStorageService from '../../services/localStorageService';
-import axios from '../../config/axios';
-import '../../App.css'
+import localStorageService from '../../../services/localStorageService';
+import axios from '../../../config/axios';
+import '../../../App.css'
 
 export default function Navigationbar({ props }) {
 

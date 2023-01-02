@@ -1,12 +1,12 @@
 import React, { useEffect, useState, } from 'react'
 import { useParams, } from 'react-router-dom'
 import axios from '../../config/axios'
-import Navigationbar from '../navigation-bar/Navigationbar'
-import Header from '../homeComponents.js/Header'
-import Footer from '../footer/Footer'
-import WriterPostList from '../profileComponents/WriterPostList'
+import Navigationbar from './navigation/Navigationbar'
+import Header from './header/Header'
+import Footer from './footer/Footer'
+import WriterPostList from './profileComponents/WriterPostList'
 import { Button, Form, Input } from 'antd'
-import Loading from '../../function/Loading'
+import Loading from '../spindle/Loading'
 import localStorageService from '../../services/localStorageService'
 
 export default function ProfileWriter(props) {
@@ -92,9 +92,9 @@ export default function ProfileWriter(props) {
   }
 
   const body = {
-    firstName: newFirstName, 
+    firstName: newFirstName,
     lastName: newLastName,
-  } 
+  }
 
   const updateNameWriter = async () => {
     try {
@@ -195,13 +195,12 @@ export default function ProfileWriter(props) {
       </>
     )
   }
- 
 
   return (
     <>
       {loading && <Loading />}
       <Navigationbar props={prop} />
-      <Header /> 
+      <Header />
 
       <div className='container-fluid w-75 font'>
         <div className='row'>
@@ -212,7 +211,6 @@ export default function ProfileWriter(props) {
             <div className='col mb-4'>
               <h1>
                 <b>{firstName} {lastName}</b>
-                {/* <Button style={{color:""}} className='btn btn-link'  size='small' onClick={null}><sub>edith</sub></Button> */}
                 {writer_name_action}
                 {writer_name_edith_form}
               </h1>

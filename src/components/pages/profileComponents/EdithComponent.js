@@ -1,7 +1,7 @@
 import { Button } from 'antd'
 import React, { useEffect, useState } from 'react'
-import '../../CreatePost.css'
-import axios from '../../config/axios'
+import '../../../CreatePost.css'
+import axios from '../../../config/axios'
 
 
 export default function EdithComponent({valueImage, valueTitle, valueText}) {

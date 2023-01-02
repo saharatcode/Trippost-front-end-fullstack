@@ -2,8 +2,8 @@ import HomePage from '../components/pages/Home'
 import LoginPage from '../components/pages/Login'
 import WriteNowPage from '../components/pages/writeNow'
 import RegisterPage from '../components/pages/Register'
-import ReadContentPage from '../components/pages/ReadContent'
-import EdithContentPage from '../components/pages/EdithContent'
+import ReadContentPage from '../components/pages/Read'
+import EdithContentPage from '../components/pages/Edith'
 import ProfileWriter from '../components/pages/ProfileWriter'
 const components = {
     home: {

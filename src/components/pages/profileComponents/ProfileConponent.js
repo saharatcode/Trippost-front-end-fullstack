@@ -1,7 +1,7 @@
 import { Button,Form, Input } from 'antd'
 import React, { useState, useEffect } from 'react'
-import axios from '../../config/axios';
-import '../../App.css'
+import axios from '../../../config/axios';
+import '../../../App.css'
 
 export default function ProfileConponent() {
 

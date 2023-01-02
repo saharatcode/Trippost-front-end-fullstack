@@ -1,6 +1,6 @@
-import { Button, Form, Input } from 'antd';
-import React, { useState, useEffect } from 'react';
-import axios from '../../config/axios'
+import { Button, Input } from 'antd';
+import React, { useState } from 'react';
+import axios from '../../../config/axios'
 
 export default function CommentWrite({ postId, fetchPost }) {
   const [inputField, setInputField] = useState("");

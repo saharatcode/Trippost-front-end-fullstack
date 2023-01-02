@@ -1,14 +1,12 @@
 import { Button, Form, Input } from 'antd'
 import React, { useState } from 'react'
-import localStorageService from '../../services/localStorageService'
-import '../../App.css'
-import axios from '../../config/axios'
+import localStorageService from '../../../services/localStorageService'
+import '../../../App.css'
+import axios from '../../../config/axios'
 
 export default function CommentShow({ comment: { text, User, id }, fetchPost }) {
-    // console.log(id)
     const token = localStorageService.getToken();
 
-    //..........................................................................................
     function parseJwt(token) {
         var base64Url = token.split('.')[1];
         var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -18,22 +16,24 @@ export default function CommentShow({ comment: { text, User, id }, fetchPost }) 
 
         return JSON.parse(jsonPayload);
     }
-    //.........................................................................................
+
     const ownerPost = parseJwt(token)
-    // console.log(ownerPost.id)
-    // console.log(`id:${User.firstName}`)
+
     const deleteComment = async () => {
         await axios.delete(`/comments/${id}`);
         fetchPost()
     }
 
-
     let CommentEditFrom;
     if (ownerPost.id == User.id) {
         CommentEditFrom = (
             <>
-                <Button style={{ color: "black" }} className='btn btn-warning' size='small' onClick={deleteComment}>delete</Button>
-
+                <Button
+                    style={{ color: "black" }}
+                    className='btn btn-warning'
+                    size='small'
+                    onClick={deleteComment}>delete
+                </Button>
             </>
         )
     }
@@ -50,7 +50,6 @@ export default function CommentShow({ comment: { text, User, id }, fetchPost }) 
                 <div className='row'>
                     <div className='col-2 mb-4'>
                         {CommentEditFrom}
-                        {/* <Button className='btn btn-warning'  size='small' onClick={deleteComment}>delete</Button> */}
                     </div>
                 </div>
             </div>

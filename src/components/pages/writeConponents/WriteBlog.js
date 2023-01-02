@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { UploadOutlined, CloudUploadOutlined } from '@ant-design/icons';
+import {CloudUploadOutlined } from '@ant-design/icons';
 import {notification } from 'antd';
 import { useParams } from 'react-router-dom'
-import axios from '../../config/axios';
-import Loading from '../../function/Loading';
-import '../../CreatePost.css'
+import axios from '../../../config/axios';
+import Loading from '../../spindle/Loading';
+import '../../../CreatePost.css'
 
 export default function WriteBlog() {
     //Edith post
@@ -79,22 +79,6 @@ export default function WriteBlog() {
         }
     }
 
-    //แปลง image URL เป็น File
-    // const fileName = 'myFi.jpg'
-    // useEffect(() => {
-    //     fetch(`${imageEdith}`)
-    //     .then(async response => {
-    //         const contentType = response.headers.get('content-type')
-    //         const blob = await response.blob()
-    //         const file = new File([blob], fileName, {type: "image/jpeg"},)
-    //         return file
-    //         // access file here
-    //     }).then( file => setData(file))
-
-    // }, [])
-
-    // console.log(data)
-    // console.log(imageInput)
     return (
         <>
             {loading && <Loading />}
