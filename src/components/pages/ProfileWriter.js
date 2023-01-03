@@ -5,6 +5,7 @@ import Navigationbar from './navigation/Navigationbar'
 import Header from './header/Header'
 import Footer from './footer/Footer'
 import WriterPostList from './profileComponents/WriterPostList'
+import Pagination from './homeComponents/Pagination'
 import { Button, Form, Input } from 'antd'
 import Loading from '../spindle/Loading'
 import localStorageService from '../../services/localStorageService'
@@ -12,6 +13,7 @@ import localStorageService from '../../services/localStorageService'
 export default function ProfileWriter(props) {
   let { id } = useParams()
   const writerId = parseInt(id)
+  const defaultImage = "https://res.cloudinary.com/dv7ae30yk/image/upload/v1671340437/blank-profile-picture-gbc548e19f_1280_eutyml.png"
 
   const [prop, setProp] = useState(props)
   const [posts, setPosts] = useState([])
@@ -114,7 +116,7 @@ export default function ProfileWriter(props) {
       <div className='row' style={{ textAlign: "center" }}>
         <img
           className='p-0'
-          src={image ?? "https://res.cloudinary.com/dv7ae30yk/image/upload/v1671340437/blank-profile-picture-gbc548e19f_1280_eutyml.png"}
+          src={image ?? defaultImage}
           style={{ width: "130px", height: "130px", borderRadius: "50%" }}
         />
       </div>
@@ -127,7 +129,7 @@ export default function ProfileWriter(props) {
   if (showFormEdithWriterName) {
     writer_name_edith_form = (
       <>
-        <div className='col-5'>
+        <div className='col-sm' style={{ maxWidth: '500px' }}>
           <Form.Item
             label="First name"
             name="firstName"
@@ -168,7 +170,7 @@ export default function ProfileWriter(props) {
           < label for="profile-upload" >
             <img
               className='p-0'
-              src={imageInput ? URL.createObjectURL(imageInput) : image ?? "https://res.cloudinary.com/dv7ae30yk/image/upload/v1671340437/blank-profile-picture-gbc548e19f_1280_eutyml.png"}
+              src={imageInput ? URL.createObjectURL(imageInput) : image ?? defaultImage}
               style={{ width: "130px", height: "130px", borderRadius: "50%", marginBottom: "6px" }}
               role={"button"}
             />
@@ -196,6 +198,19 @@ export default function ProfileWriter(props) {
     )
   }
 
+  //Pagination
+  const [currentPage, setCurrentPage] = useState(1)
+  const [postsPerPage, setPostPerPage] = useState(5)
+
+  //Get current page
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+  const paginate = (pageNumbers) => {
+    setCurrentPage(pageNumbers);
+  }
+
   return (
     <>
       {loading && <Loading />}
@@ -205,24 +220,29 @@ export default function ProfileWriter(props) {
       <div className='container-fluid w-75 font'>
         <div className='row'>
           <div className='row'>
-            <div className='col-2 mb-4 d-flex justify-content-center'>
+            <div className='col-sm-2 mb-4 d-flex justify-content-center'>
               {writer_profile_image}
             </div>
-            <div className='col mb-4'>
-              <h1>
-                <b>{firstName} {lastName}</b>
-                {writer_name_action}
-                {writer_name_edith_form}
-              </h1>
+            <div className='col-sm mb-4'>
+              {/* <div className='row g-0 border'> */}
+              <div className='col-sm g-0'>
+                <h1 >
+                  <b>{firstName} {lastName}</b>
+                  {writer_name_action}
+                  {writer_name_edith_form}
+                </h1>
+              </div>
+              {/* </div> */}
 
-              <div className='row mt-4 ' style={{ width: "750px", textAlign: "center" }}>
-                <div className='col-3 border ' style={{ padding: "8px", margin: "6px", borderRadius: "25px" }}>
+
+              <div className='row w-100 mt-4 ' style={{ width: "750px", textAlign: "center" }}>
+                <div className='col-sm-3 border ' style={{ padding: "8px", margin: "6px", borderRadius: "25px" }}>
                   <h3>Posted : {posts.length}</h3>
                 </div>
-                <div className='col-3 border' style={{ padding: "8px", margin: "6px", borderRadius: "25px" }}>
+                <div className='col-sm-3 border' style={{ padding: "8px", margin: "6px", borderRadius: "25px" }}>
                   <h3>Likes : {likeTotal}</h3>
                 </div>
-                <div className='col-4 border' style={{ padding: "8px", margin: "6px", borderRadius: "25px" }}>
+                <div className='col-sm-4 border' style={{ padding: "8px", margin: "6px", borderRadius: "25px" }}>
                   <h3>Comments : {commentTotal}</h3>
                 </div>
               </div>
@@ -231,7 +251,7 @@ export default function ProfileWriter(props) {
           </div>
           <hr />
           <div className='row'>
-            {posts.map((item) =>
+            {currentPosts.map((item) =>
             (<WriterPostList key={item.id} posts={item}
               fetchPost={fetchPost}
               postId={item.id}
@@ -239,6 +259,13 @@ export default function ProfileWriter(props) {
               title={item.title} text={item.text}
               image={item.image} />))}
 
+          </div>
+          <div className='row mt-4 text-center'>
+            <Pagination
+              postsPerPage={postsPerPage}
+              totalPosts={posts.length}
+              paginate={paginate}
+              currentPage={currentPage} />
           </div>
         </div>
 

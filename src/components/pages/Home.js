@@ -3,7 +3,6 @@ import axios from '../../config/axios'
 import PostLists from './homeComponents/PostLists'
 import TopPost from './homeComponents/TopPost'
 import Navigationbar from './navigation/Navigationbar'
-// import Content from './homeComponents/Content'
 import Pagination from './homeComponents/Pagination'
 import Footer from './footer/Footer'
 import { Input } from 'antd';

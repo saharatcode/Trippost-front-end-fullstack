@@ -82,10 +82,10 @@ export default function WriteBlog() {
     return (
         <>
             {loading && <Loading />}
-            <div className='container-fluid g-0' style={{ minHeight: "100vh", width: "700px" }}>
+            <div className='container-fluid' style={{ minHeight: "100vh", maxWidth: "700px" }}>
                 <div
                     className='row g-0'
-                    style={{ background: "#e7e7e7", height: "400px", width: "700px", }}>
+                    style={{ background: "#e7e7e7", height: "400px", width: "100%", }}>
                     <input
                         type="file"
                         className='d-none p0'
@@ -96,12 +96,12 @@ export default function WriteBlog() {
                         <div
                             role={"button"}
                             className=' d-flex align-items-center justify-content-center'
-                            style={{ width: "700px", height: "400px", marginBottom: "6px", }}>
+                            style={{ width: "100%", height: "400px", marginBottom: "6px", }}>
                             {imageInput ?
                                 <img src={URL.createObjectURL(imageInput)}
-                                    style={{ width: "700px", height: "400px" }} /> : imageEdith ?
-                                    <img src={imageEdith} style={{ width: "700px", height: "400px" }} /> :
-                                    <CloudUploadOutlined className='border' style={{ fontSize: '200px' }} />}
+                                    style={{ width: "100%", height: "400px" }} /> : imageEdith ?
+                                    <img src={imageEdith} style={{ width: "100%", height: "400px" }} /> :
+                                    <CloudUploadOutlined style={{ fontSize: '200px' }} />}
                         </div>
                     </label>
 

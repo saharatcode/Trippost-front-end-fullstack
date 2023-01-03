@@ -4,7 +4,7 @@ import axios from '../../../config/axios'
 
 export default function CommentWrite({ postId, fetchPost }) {
   const [inputField, setInputField] = useState("");
-  
+
   const id = postId
 
   const addComment = async () => {
@@ -27,14 +27,18 @@ export default function CommentWrite({ postId, fetchPost }) {
   return (
     <>
       <div className='container-fluid mt-4 mb-3 ' style={{ width: "800px" }}>
-        <div className='row'>
+        <div className='row g-0'>
           <div className='col-10'>
             {writeComment}
           </div>
-          <div className='col-2'>
-            <Button
-              style={{ width: "100%", height: "100%", color: "white", background: "black", fontSize: "20px" }}
-              onClick={addComment}>send</Button>
+          <div className='col-2 g-0'>
+            <button
+              type="button"
+              class="btn btn-dark h-100 w-100"
+              style={{fontSize: "clamp(16px, 2.5vw, 20px )"}}
+              onClick={addComment}
+              >send
+            </button>
           </div>
         </div>
 

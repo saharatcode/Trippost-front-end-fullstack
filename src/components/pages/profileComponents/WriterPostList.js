@@ -13,15 +13,15 @@ export default function WriterPostList({ fetchPost, like, comment, image, title,
                 <>
                     <div className='container-fluid'>
                         <div className='row'>
-                            <div className='col-4'>
+                            <div className='col-sm-4'>
                                 <img src={image} style={{ width: "100%", height: "100%" }} />
                             </div>
-                            <div className='col-8'>
+                            <div className='col-sm-8'>
                                 <div className='row'>
-                                    <h5 className='word-wrap'><b>{title250}</b></h5>
+                                    <h5 className='word-wrap' style={{ fontSize: "clamp(14px, 2.5vw, 18px)" }}><b>{title250}</b></h5>
                                 </div>
                                 <div className='row'>
-                                    <p className='word-wrap'>{text200}</p>
+                                    <p className='word-wrap' style={{ fontSize: "clamp(12px, 2.5vw, 16px)" }}>{text200}</p>
                                 </div>
                             </div>
                         </div>
@@ -35,7 +35,7 @@ export default function WriterPostList({ fetchPost, like, comment, image, title,
             // cancelButtonProps: {
             //     type: 'primary'
             //   },
-            onOk() {deletePost()},
+            onOk() { deletePost() },
         });
     };
 
@@ -101,35 +101,38 @@ export default function WriterPostList({ fetchPost, like, comment, image, title,
     return (
         <>
             <div className='container-fluid'>
-                <div className='row mb-4'>
-                    <div className='col-4' style={{ maxHeight: "300px" }}>
+                <div className='row mt-2'>
+                    <div className='col-sm-4' style={{ maxHeight: "300px" }}>
                         <img src={image} style={{ width: "100%", height: "100%" }} />
                     </div>
-                    <div className='col-8'>
+                    <div className='col-sm-8'>
                         <div className='row'>
-                            <h3 className='word-wrap'><b>{title250}</b></h3>
+                            <h3 className='word-wrap' style={{ fontSize: "clamp(18px, 2.5vw, 20px)" }}><b>{title250}</b></h3>
                         </div>
-                        <div className='row' style={{ height: "116px", width: "700px" }}>
-                            <h5 className='word-wrap'>{text200}</h5>
-                            <div className='row'>
-                                <div className='col'>{ActionPost}</div>
+                        <div className='row' style={{ height: "auto", width: "100%" }}>
+                            <p className='word-wrap' style={{ fontSize: "clamp(16px, 2.5vw, 18px)" }}>{text200}</p>
+                            <div className='row mb-2'>
+                                <div className='col-sm'>{ActionPost}</div>
                             </div>
                         </div>
                         <div className='row d-flex align-items-end'>
-                            <div className='col-3'>
-                                <Button>
-                                    <Link to={path}
-                                        style={{ textDecoration: "none" }}
-                                        className='color-gray'>Read more
-                                    </Link>
-                                </Button>
+                            <div className='col-sm-3 mb-4'>
+                                <Link to={path}
+                                    style={{ textDecoration: "none" }}
+                                >
+                                    <button
+                                        type='button'
+                                        className='btn btn-outline-dark'
+                                        >Read more
+                                    </button>
+                                </Link>
                             </div>
-                            <div className='col-9'>
+                            <div className='col-sm-9'>
                                 <div className='row p-0 d-flex align-items-end'>
-                                    <div className='col-8'>
+                                    <div className='col-7'>
                                         <p style={{ textAlign: "right" }}>{like.length} likes</p>
                                     </div>
-                                    <div className='col-4'>
+                                    <div className='col'>
                                         <p style={{ textAlign: "center" }}>{comment.length} comments</p>
                                     </div>
                                 </div>
@@ -137,9 +140,11 @@ export default function WriterPostList({ fetchPost, like, comment, image, title,
                             </div>
 
                         </div>
+
                     </div>
+
                 </div>
-                <hr />
+                <hr className='m-0' />
             </div>
         </>
     )

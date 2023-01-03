@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../../../App.css'
-import ReadMore from './ReadMore'
 import LikeScore from './LikeScore'
 import CommentScore from './CommentScore'
 import timeSince from '../../../services/timeSince'
@@ -11,7 +10,6 @@ export default function CardContent({ post }) {
     //ยอด Comments, like
     const [comments, setComment] = useState(post.Comments)
     const [likes, setLike] = useState(post.Likes)
-    // const [userId, setUserId] = useState(post.User.id)
     const [postId, setPostId] = useState(post.id)
     const [firstName, setFirstName] = useState(post.User.firstName)
     const [lastName, setLastName] = useState(post.User.lastName)

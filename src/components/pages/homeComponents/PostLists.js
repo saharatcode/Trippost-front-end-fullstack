@@ -1,6 +1,5 @@
 import React from 'react'
 import CardContent from './CardContent'
-// import '../../../App.css'
 
 export default function PostLists({ posts }) {
 

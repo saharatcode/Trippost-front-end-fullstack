@@ -15,21 +15,21 @@ export default function UserProfile({ firstName, lastName, profileImage, created
     return (
         <>
             <div className='container-fluid  w-100 '>
-                <div className='row  w-100 mb-2 align-items-start'>
-                    <div className='col-1'>
+                <div className='row g-0  w-100 mb-2 align-items-start'>
+                    <div className='col-1' style={{width:"50px"}}>
                         <div>
                             <img
                                 src={profileImage ?? defultImage}
-                                style={{ width: "60px", height: "60px", borderRadius: "50%" }} />
+                                style={{ width: "50px", height: "50px", borderRadius: "50%" }} />
                         </div>
                     </div>
-                    <div className='col-11 text-left'>
-                        <b style={{ fontSize: "20px", marginLeft: "10px", }}>
+                    <div className='col text-left'>
+                        <b style={{ fontSize: "clamp(16px, 2.5vw, 20px)", marginLeft: "10px", }}>
                             <Link to={path} className='color-black' style={{ textDecoration: "none", color: "" }}>
                                 {firstName} {lastName}
                             </Link>
                         </b>
-                        <p style={{ fontSize: "16px", marginLeft: "10px" }}>{DMY}</p>
+                        <p style={{ fontSize: "clamp(12px, 2.5vw, 16px)", marginLeft: "10px" }}>{DMY}</p>
                     </div>
 
                 </div>

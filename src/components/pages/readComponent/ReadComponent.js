@@ -59,23 +59,29 @@ export default function ReadComponent({
     //Toggle Like Dislike Button
     let likeButton = (
         <>
-            <HeartFilled className='like' style={{ fontSize: '40px', color: 'black', }} onClick={deleteLike} />
+            <HeartFilled
+                className='like'
+                style={{ fontSize: '40px', color: 'black', }}
+                onClick={deleteLike} />
         </>
     )
     if (liked === null) {
         likeButton = (
             <>
-                <HeartOutlined className='text-muted' role="button" style={{ fontSize: '40px', }} onClick={addLike} />
+                <HeartOutlined
+                    className='text-muted'
+                    role="button"
+                    style={{ fontSize: '40px', }}
+                    onClick={addLike} />
             </>
         )
     }
 
     return (
         <>
-            {/* <div className='border border-danger' style={{ marginTop: "50px" }}> */}
             <div
                 className='container-fluid'
-                style={{ width: "800px", paddingTop: "24px", background:"white" }}>
+                style={{ width: "800px", paddingTop: "24px", background: "white" }}>
                 <div className='row'>
                     <div className='col'>
                         <div className='title-read word-wrap'>{title}</div>
@@ -106,10 +112,6 @@ export default function ReadComponent({
                     </div>
                 </div>
             </div>
-            {/* </div> */}
-
-
         </>
-
     )
 }
